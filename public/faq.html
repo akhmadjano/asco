@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="uz" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="pageTitle">FAQ - Senera</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- ================== NAVBAR ================== -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="./index.html">
+      <img src="/assets/img/image copy.png" alt="Senera logo">
+    </a>
+
+    <!-- Desktop links -->
+    <div class="collapse navbar-collapse" id="navbarDesktop">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html" data-lang="aboutNav">Biz haqimizda</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">
+            Xizmatlar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+            <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+        <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      </ul>
+
+      <select class="form-select ms-3 language-select" style="width:90px;" id="lang">
+        <option value="uz">UZ</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+
+    <!-- Mobil tugma -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================== MOBIL OFFCANVAS ================== -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Senera</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="../index.html" data-lang="aboutNav">Biz haqimizda</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">Xizmatlar</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+          <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+      <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      
+      <li class="nav-item mt-4">
+        <select class="form-select language-select" id="mobileLang">
+          <option value="uz">UZ</option>
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br><br><br>
+
+<!-- ================== FAQ BO'LIMI ================== -->
+<section class="faq-section py-5" id="faq">
+  <div class="container">
+    <h2 class="section-title text-center mb-5" data-lang="faqTitle">Tez-tez so'raladigan savollar</h2>
+
+    <div class="accordion" id="faqAccordion">
+
+      <!-- 1-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+            <span data-lang="q1">MChJ ro'yxatdan o'tkazish uchun qancha vaqt ketadi?</span>
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a1">
+            Odatda 3–5 ish kuni ichida ro'yxatdan o'tkazish jarayoni yakunlanadi. Agar hujjatlar to'liq va to'g'ri tayyor bo'lsa, 2 kunda ham yakunlash mumkin. Biz hujjatlarni oldindan tayyorlab, jarayonni tezlashtiramiz.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+            <span data-lang="q2">Buxgalteriya xizmatlari narxi qanday hisoblanadi?</span>
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a2">
+            Narx xodimlar soni, oyiga hujjatlar hajmi, bank tranzaksiyalari soni va korxona oborotiga qarab hisoblanadi. Dastlabki maslahat bepul — aniq tarifni sizning holatingizga qarab hisoblab beramiz.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+            <span data-lang="q3">Narxlar QQS bilan birga ko'rsatilganmi?</span>
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a3">
+            Yo'q, barcha ko'rsatilgan narxlar QQSsiz (0% yoki 12% qo'shilishi mumkin). Yakuniy hisob-fakturada QQS alohida ko'rsatiladi.
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+            <span data-lang="q4">IT-park uchun ro'yxatdan o'tishda qanday yordam berasiz?</span>
+          </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a4">
+            Biz IT-parkka ariza topshirish, biznes-reja tayyorlash, ta'sis hujjatlarini moslashtirish va ro'yxatdan o'tkazish jarayonini to'liq hamrohlik qilamiz. Tajribamiz tufayli jarayon tez va muammosiz o'tadi.
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+            <span data-lang="q5">Birinchi maslahat haqiqatan ham bepulmi?</span>
+          </button>
+        </h2>
+        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a5">
+            Ha, birinchi maslahat bepul. Telefon yoki onlayn (Zoom/Telegram) orqali 20–40 daqiqa davomida vaziyatingizni muhokama qilamiz va qanday yordam bera olishimizni aytib beramiz.
+          </div>
+        </div>
+      </div>
+
+      <!-- 6-savol -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+            <span data-lang="q6">Shartnoma tuzish majburiymi?</span>
+          </button>
+        </h2>
+        <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body" data-lang="a6">
+            Ha, uzoq muddatli hamkorlik uchun shartnoma tuzamiz. Bir martalik xizmatlar uchun esa oddiy ariza va hisob-faktura yetarli bo'ladi.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Qo'shimcha savol bo'lsa -->
+    <div class="text-center mt-5">
+      <p class="lead" data-lang="faqExtra">Savolingizga javob topa olmadingizmi?</p>
+      <a href="../contact.html" class="btn btn-primary btn-lg px-5" data-lang="faqBtn">Biz bilan bog'laning</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5">
+        <h3 class="footer-logo">Senera</h3>
+        <p class="footer-desc" data-lang="footerDesc">
+          Professional konsalting xizmatlari. Biznesingizni huquqiy va moliyaviy jihatdan xavfsiz va samarali boshqarishda ishonchli hamkor.
+        </p>
+        <div class="social-icons mt-4">
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerServices">Xizmatlar</h5>
+        <ul class="footer-links">
+          <li><a href="../legal.html">Huquqiy xizmatlar</a></li>
+          <li><a href="../accounting.html">Buxgalteriya xizmatlari</a></li>
+          <li><a href="#">Biznes konsalting</a></li>
+          <li><a href="#">Soliq maslahatlari</a></li>
+          <li><a href="#">Shartnomalar tayyorlash</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerCompany">Kompaniya</h5>
+        <ul class="footer-links">
+          <li><a href="#">Biz haqimizda</a></li>
+          <li><a href="#">Jamoa</a></li>
+          <li><a href="#">Afzalliklar</a></li>
+          <li><a href="#">Yangiliklar</a></li>
+          <li><a href="#">Arizalar</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-lang="footerContact">Aloqa ma'lumotlari</h5>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-phone-volume"></i>
+            <div>
+              <strong data-lang="phoneStrong">Telefon:</strong><br>
+              +998 99 123 45 67<br>
+              +998 71 123 45 67
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong data-lang="emailStrong">Email:</strong><br>
+              info@senera.uz<br>
+              support@senera.uz
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong data-lang="addressStrong">Manzil:</strong><br>
+              Toshkent sh., Yunusobod tumani,<br>
+              Chilanzar ko'chasi, 45-uy
+            </div>
+          </li>
+          <li>
+            <i class="far fa-clock"></i>
+            <div>
+              <strong data-lang="hoursStrong">Ish vaqti:</strong><br>
+              Dushanba – Juma: 09:00 – 18:00
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-5 pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0" data-lang="footerCopyright">© 2025 Senera. Barcha huquqlar himoyalangan.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+          <a href="#" class="footer-policy" data-lang="footerPolicy">Maxfiylik siyosati</a> • 
+          <a href="#" class="footer-policy" data-lang="footerTerms">Foydalanish shartlari</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/faq.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/translate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  
+    // ====================== XAVFSIZLIK — Klaviatura va sichqoncha cheklovlari ======================
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 123) { // F12
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { // Ctrl+Shift+I/J
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 85) { // Ctrl+U
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 83) { // Ctrl+S
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // O'ng tugma (right-click) ni bloklash
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+</script>
+</body>
+</html>

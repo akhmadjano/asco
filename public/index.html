@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uz" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Senera — Konsalting xizmatlari</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- ================== NAVBAR ================== -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="./index.html">
+      <img src="/assets/img/image copy.png" alt="Senera logo">
+    </a>
+
+    <!-- Desktop links -->
+    <div class="collapse navbar-collapse" id="navbarDesktop">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html" data-lang="aboutNav">Biz haqimizda</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">
+            Xizmatlar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+            <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+        <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      </ul>
+
+      <select class="form-select ms-3 language-select" style="width:90px;" id="lang">
+        <option value="uz">UZ</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+
+    <!-- Mobil tugma -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================== MOBIL OFFCANVAS ================== -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Senera</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="./html/index.html" data-lang="aboutNav">Biz haqimizda</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">Xizmatlar</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+          <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+      <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      
+      <li class="nav-item mt-4">
+        <select class="form-select language-select" id="mobileLang">
+          <option value="uz">UZ</option>
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================== HERO ================== -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-lang="heroTitle">Senera bilan biznesingizni yangi bosqichga olib chiqing</h1>
+    <p class="lead" data-lang="heroDesc">
+      Huquqiy va buxgalteriya masalalarida professional yordam — vaqt va pulingizni tejang, xavfsiz rivojlaning.
+    </p>
+    <a href="../contact.html" class="btn btn-hero" style="color: rgb(0, 68, 255)" data-lang="heroBtn">
+      Bepul maslahat olish →
+    </a>
+  </div>
+</section>
+
+<!-- ================== SERVICES ================== -->
+<section class="py-5" id="services">
+  <div class="container">
+    <h2 class="section-title" data-lang="servicesTitle">Bizning xizmatlar</h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="card-icon">
+            <i class="fas fa-balance-scale fa-3x"></i>
+          </div>
+          <h3 data-lang="legalCardTitle">Huquqiy xizmatlar</h3>
+          <p data-lang="legalCardDesc">MChJ, YaTT ro'yxatdan o'tkazish, shartnomalar tayyorlash, soliq va sud masalalari bo'yicha professional yordam.</p>
+          <a href="./legal.html" class="btn btn-outline-primary" data-lang="detailsBtn">Batafsil</a><br><br>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="card-icon">
+            <i class="fas fa-calculator fa-3x"></i>
+          </div>
+          <h3 data-lang="accountingCardTitle">Buxgalteriya xizmatlari</h3>
+          <p data-lang="accountingCardDesc">To'liq buxgalteriya yuritish, soliq hisobotlari, ESF, 1C, kadr hujjatlari va ish haqi hisobi.</p>
+          <a href="../accounting.html" class="btn btn-outline-primary" data-lang="detailsBtn">Batafsil</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="card-icon">
+            <i class="fas fa-lightbulb fa-3x"></i>
+          </div>
+          <h3 data-lang="consultingCardTitle">Konsalting xizmatlari</h3>
+          <p data-lang="consultingCardDesc">Biznesni rivojlantirish, investitsiya loyihalari, strategik maslahatlar va xavf-xatarlarni boshqarish.</p>
+          <a href="../accounting.html" class="btn btn-outline-primary" data-lang="detailsBtn">Batafsil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== STATS ================== -->
+<section class="stats-section py-5 bg-light">
+  <div class="container">
+    <div class="row text-center g-4 justify-content-center">
+      <div class="col-md-3 col-6">
+        <div class="stat-item">
+          <h2 class="stat-number" data-count="50">+50</h2>
+          <p class="stat-label" data-lang="stat1Label">MUVAFFAQIYATLI<br>ISH</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-item">
+          <h2 class="stat-number" data-count="800">+800</h2>
+          <p class="stat-label" data-lang="stat2Label">YURIDIK<br>MASLAHATLAR</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-item">
+          <h2 class="stat-number" data-count="500">+500</h2>
+          <p class="stat-label" data-lang="stat3Label">YOPIQ<br>ISHLAR</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-item">
+          <h2 class="stat-number" data-count="300">+300</h2>
+          <p class="stat-label" data-lang="stat4Label">BUXGALTERIYA<br>XIZMATINING MIJOZLARI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5">
+        <h3 class="footer-logo">Senera</h3>
+        <p class="footer-desc" data-lang="footerDesc">
+          Professional konsalting xizmatlari. Biznesingizni huquqiy va moliyaviy jihatdan xavfsiz va samarali boshqarishda ishonchli hamkor.
+        </p>
+        <div class="social-icons mt-4">
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerServices">Xizmatlar</h5>
+        <ul class="footer-links">
+          <li><a href="../legal.html">Huquqiy xizmatlar</a></li>
+          <li><a href="../accounting.html">Buxgalteriya xizmatlari</a></li>
+          <li><a href="#">Biznes konsalting</a></li>
+          <li><a href="#">Soliq maslahatlari</a></li>
+          <li><a href="#">Shartnomalar tayyorlash</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerCompany">Kompaniya</h5>
+        <ul class="footer-links">
+          <li><a href="#">Biz haqimizda</a></li>
+          <li><a href="#">Jamoa</a></li>
+          <li><a href="#">Afzalliklar</a></li>
+          <li><a href="#">Yangiliklar</a></li>
+          <li><a href="#">Arizalar</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-lang="footerContact">Aloqa ma'lumotlari</h5>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-phone-volume"></i>
+            <div>
+              <strong>Telefon:</strong><br>
+              +998 99 123 45 67<br>
+              +998 71 123 45 67
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email:</strong><br>
+              info@senera.uz<br>
+              support@senera.uz
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Manzil:</strong><br>
+              Toshkent sh., Yunusobod tumani,<br>
+              Chilanzar ko'chasi, 45-uy
+            </div>
+          </li>
+          <li>
+            <i class="far fa-clock"></i>
+            <div>
+              <strong>Ish vaqti:</strong><br>
+              Dushanba – Juma: 09:00 – 18:00
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-5 pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0" data-lang="footerCopyright">&copy; 2025 Senera. Barcha huquqlar himoyalangan.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+          <a href="#" class="footer-policy" data-lang="footerPolicy">Maxfiylik siyosati</a> • 
+          <a href="#" class="footer-policy" data-lang="footerTerms">Foydalanish shartlari</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/translate.js"></script>
+<script>
+  
+    // ====================== XAVFSIZLIK — Klaviatura va sichqoncha cheklovlari ======================
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 123) { // F12
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { // Ctrl+Shift+I/J
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 85) { // Ctrl+U
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 83) { // Ctrl+S
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // O'ng tugma (right-click) ni bloklash
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+</script>
+</body>
+</html>

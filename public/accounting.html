@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="uz" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-lang="pageTitle">Senera — Buxgalteriya xizmatlari</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/cals.css">
+</head>
+<body>
+
+<!-- ================== NAVBAR ================== -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="./index.html">
+      <img src="/assets/img/image copy.png" alt="Senera logo">
+    </a>
+
+    <!-- Desktop links -->
+    <div class="collapse navbar-collapse" id="navbarDesktop">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html" data-lang="aboutNav">Biz haqimizda</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">
+            Xizmatlar
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+            <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+        <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      </ul>
+
+      <select class="form-select ms-3 language-select" style="width:90px;" id="lang">
+        <option value="uz">UZ</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+
+    <!-- Mobil tugma -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileOffcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================== MOBIL OFFCANVAS ================== -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileOffcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Senera</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="../index.html" data-lang="aboutNav">Biz haqimizda</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-lang="servicesNav">Xizmatlar</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="../legal.html" data-lang="legalNav">Huquqiy xizmatlar</a></li>
+          <li><a class="dropdown-item" href="../accounting.html" data-lang="accountingNav">Buxgalteriya xizmatlari</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="../why.html" data-lang="whyNav">Nega biz?</a></li>
+      <li class="nav-item"><a class="nav-link" href="../faq.html" data-lang="faqNav">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link" href="../contact.html" data-lang="contactNav">Aloqa</a></li>
+      
+      <li class="nav-item mt-4">
+        <select class="form-select language-select" id="mobileLang">
+          <option value="uz">UZ</option>
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================== TARIFLAR BO'LIMI ================== -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold" style="color: var(--primary);" data-lang="tariffsTitle">Buxgalteriya xizmatlari tariflari</h2>
+
+    <div class="row g-4">
+      <!-- Ekonom -->
+      <div class="col-lg-3 col-md-6">
+        <div class="tariff-card">
+          <div class="tariff-header" data-lang="ekonom">Ekonom</div>
+          <div class="tariff-price">от 2 500 000<span data-lang="perMonth">so'm/oy</span></div>
+          <ul class="tariff-features">
+            <li>до 5 xodim</li>
+            <li>до 30 hujjat</li>
+            <li>до 10 bank tranzaksiyasi</li>
+            <li>Nalogi YCH</li>
+            <li>Oborot до 100 mln so'm</li>
+          </ul>
+          <a href="../contact.html">
+            <button class="tariff-btn" data-lang="selectTariff">TARIF TANLASH</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Start -->
+      <div class="col-lg-3 col-md-6">
+        <div class="tariff-card">
+          <div class="tariff-header" data-lang="start">Start</div>
+          <div class="tariff-price">от 3 500 000<span data-lang="perMonth">so'm/oy</span></div>
+          <ul class="tariff-features">
+            <li>до 10 xodim</li>
+            <li>до 50 hujjat</li>
+            <li>до 15 bank tranzaksiyasi</li>
+            <li>Nalogi OCH (NDS)</li>
+            <li>Oborot до 100 mln so'm</li>
+          </ul>
+          <a href="../contact.html">
+            <button class="tariff-btn" data-lang="selectTariff">TARIF TANLASH</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Biznes -->
+      <div class="col-lg-3 col-md-6">
+        <div class="tariff-card">
+          <div class="tariff-header" data-lang="biznes">Biznes</div>
+          <div class="tariff-price">от 4 500 000<span data-lang="perMonth">so'm/oy</span></div>
+          <ul class="tariff-features">
+            <li>до 15 xodim</li>
+            <li>до 80 hujjat</li>
+            <li>до 20 bank tranzaksiyasi</li>
+            <li>Nalogi OCH (NDS)</li>
+            <li>Oborot до 800 mln so'm</li>
+          </ul>
+          <a href="../contact.html">
+            <button class="tariff-btn" data-lang="selectTariff">TARIF TANLASH</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="col-lg-3 col-md-6">
+        <div class="tariff-card">
+          <div class="tariff-header" data-lang="premium">Premium</div>
+          <div class="tariff-price">от 6 500 000<span data-lang="perMonth">so'm/oy</span></div>
+          <ul class="tariff-features">
+            <li>до 20 xodim</li>
+            <li>до 120 hujjat</li>
+            <li>до 30 bank tranzaksiyasi</li>
+            <li>Nalogi OCH (NDS)</li>
+            <li>Oborot до 1.5 mlrd so'm</li>
+          </ul>
+          <a href="../contact.html">
+            <button class="tariff-btn" data-lang="selectTariff">TARIF TANLASH</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== KALKULYATOR BO'LIMI ================== -->
+<section class="calculator-section py-5">
+  <div class="container">
+    <h3 class="text-center mb-5 fw-bold" style="color: var(--primary);" data-lang="calcTitle">Buxgalteriya tarifini hisoblash</h3>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <!-- 1-qism: Ish yuritish soxasi (checkbox) -->
+        <div class="mb-5">
+          <h5 class="mb-4 text-center" data-lang="activityTitle1">Ish yuritish soxasi (bir nechtasini tanlashingiz mumkin)</h5>
+          <div class="row g-3">
+            <div class="col-md-3 col-6">
+              <div class="activity-card">
+                <input type="checkbox" class="activity-checkbox" id="xizmatlar" value="xizmatlar">
+                <label for="xizmatlar" class="activity-label">
+                  <i class="fas fa-briefcase"></i><br>
+                  <span data-lang="xizmatlar">Xizmatlar</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="activity-card">
+                <input type="checkbox" class="activity-checkbox" id="savdo" value="savdo">
+                <label for="savdo" class="activity-label">
+                  <i class="fas fa-shopping-cart"></i><br>
+                  <span data-lang="savdo">Savdo</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="activity-card">
+                <input type="checkbox" class="activity-checkbox" id="ishlabchiqarish" value="ishlabchiqarish">
+                <label for="ishlabchiqarish" class="activity-label">
+                  <i class="fas fa-industry"></i><br>
+                  <span data-lang="ishlabchiqarish">Ishlab chiqarish</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="activity-card">
+                <input type="checkbox" class="activity-checkbox" id="importexport" value="importexport">
+                <label for="importexport" class="activity-label">
+                  <i class="fas fa-exchange-alt"></i><br>
+                  <span data-lang="importexport">Import-eksport</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-qism: Ish yuritish soxasi turi (radio) -->
+        <div class="mb-5">
+          <h5 class="mb-4 text-center" data-lang="activityTitle2">Ish yuritish soxasi turi (faqat bittasini tanlang)</h5>
+          <div class="row g-3">
+            <div class="col-md-4 col-12">
+              <div class="activity-card">
+                <input type="radio" name="soliq-turi" class="activity-radio" id="ruxsat-soliq" value="ruxsat">
+                <label for="ruxsat-soliq" class="activity-label">
+                  <i class="fas fa-check-circle"></i><br>
+                  <span data-lang="ruxsatSoliq">Ruxsat etilgan soliq</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="activity-card">
+                <input type="radio" name="soliq-turi" class="activity-radio" id="savdo-soliq" value="savdo">
+                <label for="savdo-soliq" class="activity-label">
+                  <i class="fas fa-chart-line"></i><br>
+                  <span data-lang="savdoSoliq">Savdo solig'i</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="activity-card">
+                <input type="radio" name="soliq-turi" class="activity-radio" id="oos-loyihasi" value="oos">
+                <label for="oos-loyihasi" class="activity-label">
+                  <i class="fas fa-file-invoice"></i><br>
+                  <span data-lang="oosTolovchi">OOS to'lovchi</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input maydonlari -->
+        <div class="row g-4 mb-5 justify-content-center">
+          <div class="col-md-5">
+            <label class="form-label fw-bold" data-lang="employeesLabel">Xodimlar soni *</label>
+            <input type="number" class="form-control form-control-lg" id="employees" min="1" value="5" required />
+          </div>
+          <div class="col-md-5">
+            <label class="form-label fw-bold" data-lang="documentsLabel">Hujjatlar soni (oyiga) *</label>
+            <input type="number" class="form-control form-control-lg" id="documents" min="1" value="30" required />
+          </div>
+        </div>
+
+        <!-- Tugmalar -->
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg px-5 py-3 mb-4" id="calculateBtn" data-lang="calculateBtn">
+            Xarajatlar smetasini olish
+          </button>
+
+          <div id="resultContainer" class="mt-4 d-none">
+            <div class="alert alert-success text-center" id="resultText"></div>
+            <a href="../contact.html">
+              <button class="btn btn-outline-primary btn-lg px-5 mt-3" id="contactBtn" data-lang="consultBtn">
+                Konsultatsiya olish →
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5">
+        <h3 class="footer-logo">Senera</h3>
+        <p class="footer-desc" data-lang="footerDesc">
+          Professional konsalting xizmatlari. Biznesingizni huquqiy va moliyaviy jihatdan xavfsiz va samarali boshqarishda ishonchli hamkor.
+        </p>
+        <div class="social-icons mt-4">
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerServices">Xizmatlar</h5>
+        <ul class="footer-links">
+          <li><a href="../legal.html">Huquqiy xizmatlar</a></li>
+          <li><a href="../accounting.html">Buxgalteriya xizmatlari</a></li>
+          <li><a href="#">Biznes konsalting</a></li>
+          <li><a href="#">Soliq maslahatlari</a></li>
+          <li><a href="#">Shartnomalar tayyorlash</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5">
+        <h5 class="footer-title" data-lang="footerCompany">Kompaniya</h5>
+        <ul class="footer-links">
+          <li><a href="#">Biz haqimizda</a></li>
+          <li><a href="#">Jamoa</a></li>
+          <li><a href="#">Afzalliklar</a></li>
+          <li><a href="#">Yangiliklar</a></li>
+          <li><a href="#">Arizalar</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-lang="footerContact">Aloqa ma'lumotlari</h5>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-phone-volume"></i>
+            <div>
+              <strong>Telefon:</strong><br>
+              +998 99 123 45 67<br>
+              +998 71 123 45 67
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email:</strong><br>
+              info@senera.uz<br>
+              support@senera.uz
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Manzil:</strong><br>
+              Toshkent sh., Yunusobod tumani,<br>
+              Chilanzar ko'chasi, 45-uy
+            </div>
+          </li>
+          <li>
+            <i class="far fa-clock"></i>
+            <div>
+              <strong>Ish vaqti:</strong><br>
+              Dushanba – Juma: 09:00 – 18:00
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-5 pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0" data-lang="footerCopyright">© 2025 Senera. Barcha huquqlar himoyalangan.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+          <a href="#" class="footer-policy" data-lang="footerPolicy">Maxfiylik siyosati</a> • 
+          <a href="#" class="footer-policy" data-lang="footerTerms">Foydalanish shartlari</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+<script src="/assets/js/calc.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/translate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+  
+    // ====================== XAVFSIZLIK — Klaviatura va sichqoncha cheklovlari ======================
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 123) { // F12
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) { // Ctrl+Shift+I/J
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 85) { // Ctrl+U
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 83) { // Ctrl+S
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // O'ng tugma (right-click) ni bloklash
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+</script>
+
+</body>
+</html>

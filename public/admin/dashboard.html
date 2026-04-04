@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8"/>
+    <title>ASCO Admin Dashboard</title>
+
+    <!-- ICON PACK -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+
+<body>
+
+<!-- ===================== SIDEBAR ===================== -->
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <img src="https://lms.tuit.uz/assets/images/logo-md.png" alt="Logo">
+        <h2>ASCO Admin</h2>
+    </div>
+
+    <nav class="menu">
+        <div class="menu-item active" onclick="setMenu(this); loadDashboard()">
+            <i class="ri-dashboard-line"></i><span>Dashboard</span>
+        </div>
+
+        <div class="menu-item" onclick="setMenu(this); loadTaxReports()">
+            <i class="ri-file-list-3-line"></i><span>Soliq Hisobotlari</span>
+        </div>
+
+        <div class="menu-item" onclick="setMenu(this); loadInfoEntities()">
+            <i class="ri-information-line"></i><span>Soliq Ma’lumotlari</span>
+        </div>
+
+        <div class="menu-item" onclick="setMenu(this); loadUsers()">
+            <i class="ri-user-3-line"></i><span>Foydalanuvchilar</span>
+        </div>
+
+        <div class="menu-item" onclick="setMenu(this); loadGroups()">
+            <i class="ri-group-line"></i><span>Guruhlar</span>
+        </div>
+
+        <div class="menu-item" onclick="setMenu(this); loadTaxes()">
+            <i class="ri-bank-card-line"></i><span>Soliq Turlari</span>
+        </div>
+
+        <!-- LOGOUT -->
+        <div class="menu-item logout" onclick="logout()">
+            <i class="ri-logout-box-line"></i>
+            <span>Chiqish</span>
+        </div>
+    </nav>
+</aside>
+
+<!-- ===================== MAIN AREA ===================== -->
+<div class="main">
+    <header class="main-header">
+        <h1 id="headerTitle">Dashboard</h1>
+    </header>
+
+    <section id="content" class="content"></section>
+</div>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- VIEW MODAL -->
+<div id="viewTaxModal" class="modal">
+    <div class="modalContent" id="viewTaxContent"></div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editTaxModal" class="modal">
+    <div class="modalContent" id="editTaxContent"></div>
+</div>
+
+<!-- ADD MODAL (Tax Report va Info Entity uchun umumiy) -->
+<div id="addTaxModal" class="modal">
+    <div class="modalContent" id="addTaxContent"></div>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="/js/dashboard.js"></script>
+
+<script>
+// Menyu faollashtirish
+function setMenu(el) {
+    document.querySelectorAll(".menu-item").forEach(item => item.classList.remove("active"));
+    el.classList.add("active");
+}
+
+// Sahifa yuklanganda Dashboardni ochish
+window.onload = () => loadDashboard();
+
+// === CHIQISH FUNKSİYASI ===
+// Endi chiroyli suzuvchi modal ishlatiladi
+function logout() {
+    confirmModal("Haqiqatan chiqmoqchimisiz?", () => {
+        window.location.href = "/html/index.html";
+    });
+}
+
+// === CONFIRM MODAL (Ha/Yo‘q) ===
+function confirmModal(message, onConfirm) {
+    let modal = document.getElementById("confirmModal");
+
+    if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "confirmModal";
+        modal.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
+            z-index: 9999; opacity: 0; transition: opacity 0.3s ease;
+        `;
+        modal.innerHTML = `
+            <div style="
+                background: #fff; padding: 25px 30px; border-radius: 15px; 
+                max-width: 400px; width: 90%; text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                transform: translateY(-50px);
+                transition: transform 0.3s ease;
+            ">
+                <p id="confirmMessage" style="margin-bottom: 25px; font-size: 18px; color: #333; font-weight: 500;"></p>
+                <button id="confirmYes" style="
+                    margin-right: 10px; padding: 10px 20px; border: none; border-radius: 8px;
+                    background: linear-gradient(45deg, #4CAF50, #66BB6A); color: #fff;
+                    cursor: pointer; font-size: 16px;
+                ">Ha</button>
+                <button id="confirmNo" style="
+                    padding: 10px 20px; border: none; border-radius: 8px;
+                    background: linear-gradient(45deg, #F44336, #E57373); color: #fff;
+                    cursor: pointer; font-size: 16px;
+                ">Yo‘q</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const container = modal.querySelector("div");
+        modal.querySelector("#confirmNo").onclick = () => {
+            container.style.transform = "translateY(-50px)";
+            modal.style.opacity = 0;
+            setTimeout(() => modal.style.display = "none", 300);
+        };
+    }
+
+    modal.querySelector("#confirmMessage").innerText = message;
+    modal.style.display = "flex";
+
+    setTimeout(() => {
+        modal.style.opacity = 1;
+        modal.querySelector("div").style.transform = "translateY(0)";
+    }, 10);
+
+    modal.querySelector("#confirmYes").onclick = () => {
+        modal.querySelector("div").style.transform = "translateY(-50px)";
+        modal.style.opacity = 0;
+        setTimeout(() => modal.style.display = "none", 300);
+        if (onConfirm) onConfirm();
+    };
+}
+
+// === ALERT MODAL (faqat OK tugmasi) ===
+// Boshqa joylarda (masalan, o‘chirish, saqlash) ishlatiladi
+function alertModal(message) {
+    let modal = document.getElementById("alertModal");
+
+    if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "alertModal";
+        modal.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
+            z-index: 9999; opacity: 0; transition: opacity 0.3s ease;
+        `;
+        modal.innerHTML = `
+            <div style="
+                background: #fff; padding: 25px 30px; border-radius: 15px; 
+                max-width: 400px; width: 90%; text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                transform: translateY(-50px);
+                transition: transform 0.3s ease;
+            ">
+                <p id="alertMessage" style="margin-bottom: 25px; font-size: 18px; color: #333; font-weight: 500;"></p>
+                <button id="alertOk" style="
+                    padding: 10px 25px; border: none; border-radius: 8px;
+                    background: linear-gradient(45deg, #2196F3, #64B5F6); color: #fff;
+                    cursor: pointer; font-size: 16px;
+                ">OK</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const container = modal.querySelector("div");
+        modal.querySelector("#alertOk").onclick = () => {
+            container.style.transform = "translateY(-50px)";
+            modal.style.opacity = 0;
+            setTimeout(() => modal.style.display = "none", 300);
+        };
+    }
+
+    modal.querySelector("#alertMessage").innerText = message;
+    modal.style.display = "flex";
+
+    setTimeout(() => {
+        modal.style.opacity = 1;
+        modal.querySelector("div").style.transform = "translateY(0)";
+    }, 10);
+}
+</script>
+
+</body>
+</html>

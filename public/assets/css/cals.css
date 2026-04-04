@@ -1,0 +1,242 @@
+    :root {
+      --primary: #d4a017;       /* Asosiy oltin rang */
+      --primary-dark: #b58900;
+      --secondary: #2c3e50;
+      --light-bg: #f8f9fa;
+      --text-dark: #1a1a1a;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-dark);
+      background: var(--light-bg);
+    }
+
+    /* Tarif kartalari */
+    .tariff-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.35s ease;
+      border: none;
+      position: relative;
+      height: 100%;
+    }
+
+    .tariff-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(212,160,23,0.25);
+    }
+
+    .tariff-header {
+      background: var(--primary);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .tariff-price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+      padding: 1.5rem 0;
+      background: rgba(212,160,23,0.08);
+    }
+
+    .tariff-price small {
+      font-size: 1.1rem;
+      font-weight: 400;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .tariff-features {
+      padding: 1.8rem 2rem;
+      list-style: none;
+    }
+
+    .tariff-features li {
+      margin-bottom: 1.1rem;
+      font-size: 1.05rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .tariff-features li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .tariff-btn {
+      display: block;
+      width: 85%;
+      margin: 1.5rem auto;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+
+    .tariff-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212,160,23,0.3);
+    }
+
+    /* Calculator bo'limi */
+    .calculator-section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      padding: 3rem;
+      margin: 4rem 0;
+    }
+
+    .activity-type {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .activity-btn {
+      width: 100%;
+      padding: 1.2rem;
+      margin: 0.8rem 0;
+      background: #f1f5f9;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .activity-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px rgba(212,160,23,0.25);
+    }
+
+    .activity-btn:hover:not(.active) {
+      border-color: var(--primary);
+      background: rgba(212,160,23,0.08);
+    }
+
+    .calculator-form label {
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .calculator-form input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 2px solid #dee2e6;
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+
+    .result-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .result-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .tariff-price { font-size: 2.1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .calculator-section { padding: 2rem; }
+      .activity-btn { font-size: 1rem; padding: 1rem; }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  .activity-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  }
+
+  .activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+
+  .activity-checkbox, .activity-radio {
+    display: none;
+  }
+
+  .activity-label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.3s;
+  }
+
+  .activity-checkbox:checked + .activity-label,
+  .activity-radio:checked + .activity-label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .activity-card.active {
+    border-color: var(--primary);
+    background: rgba(212,160,23,0.08);
+  }
+
+  #resultContainer .alert {
+    font-size: 1.3rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }

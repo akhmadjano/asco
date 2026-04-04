@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="card">
+    <h2>Register</h2>
+
+    <form id="regForm">
+      <label>First name
+        <input name="firstname" required />
+      </label>
+
+      <label>Last name
+        <input name="lastname" required />
+      </label>
+
+      <label>Username
+        <input name="username" required />
+      </label>
+
+      <label>Password
+        <input name="password" type="password" required />
+      </label>
+
+      <button type="submit">Ro'yxatdan o'tish</button>
+    </form>
+
+    <p><a href="/">Kirish</a></p>
+    <div id="msg"></div>
+  </div>
+
+  <script src="./js/auth.js"></script>
+</body>
+</html>
