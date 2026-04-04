@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await postJson("/auth/login", body);
 
       if (res.success) {
-        window.location.href = "/dashboard.html";
+        window.location.href = "/admin/dashboard.html";
       } else {
         msg.textContent = res.error || "Login failed!";
       }
