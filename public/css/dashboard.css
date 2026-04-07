@@ -1,12 +1,16 @@
-    /* =======================================
+/* =======================================
    GLOBAL STYLE
 ======================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -15,6 +19,7 @@ body {
     display: flex;
     color: #1E1E1E;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* =======================================
@@ -35,6 +40,9 @@ body {
     border-right: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 6px 0 18px rgba(0,0,0,0.18);
     animation: sidebarFade 0.5s ease forwards;
+    z-index: 1100;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
 @keyframes sidebarFade {
@@ -49,6 +57,7 @@ body {
 .sidebar-header img {
     width: 90px;
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+    max-width: 100%;
 }
 
 .sidebar-header h2 {
@@ -62,6 +71,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 100%;
 }
 
 .menu-item {
@@ -75,11 +85,13 @@ body {
     color: #E8E1FF;
     transition: 0.25s ease;
     font-weight: 500;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .menu-item i {
     font-size: 20px;
     opacity: 0.9;
+    flex-shrink: 0;
 }
 
 .menu-item:hover {
@@ -96,6 +108,56 @@ body {
     padding-left: 20px !important;
 }
 
+.menu-item.logout {
+    margin-top: auto;
+    color: #ff4d4f;
+}
+
+.menu-item.logout:hover {
+    background: rgba(255, 77, 79, 0.15);
+}
+
+/* =======================================
+   HAMBURGER TOGGLE BUTTON
+======================================= */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 16px;
+    z-index: 1200;
+    background: #5B21B6;
+    color: white;
+    border: none;
+    padding: 9px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.sidebar-toggle:hover {
+    background: #6D28D9;
+}
+
+/* =======================================
+   OVERLAY
+======================================= */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1050;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
 /* =======================================
    MAIN CONTENT
 ======================================= */
@@ -104,6 +166,8 @@ body {
     width: calc(100% - 260px);
     min-height: 100vh;
     animation: fadeIn 0.4s ease forwards;
+    display: flex;
+    flex-direction: column;
 }
 
 @keyframes fadeIn {
@@ -124,12 +188,16 @@ body {
     position: sticky;
     top: 0;
     z-index: 20;
+    gap: 12px;
 }
 
 .main-header h1 {
     font-size: 22px;
     font-weight: 600;
     color: #292929;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .main-header select {
@@ -137,6 +205,8 @@ body {
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     transition: 0.2s ease;
+    font-size: 14px;
+    flex-shrink: 0;
 }
 
 .main-header select:hover {
@@ -148,11 +218,19 @@ body {
 ======================================= */
 .content {
     padding: 32px;
+    flex: 1;
 }
 
 /* =======================================
    TABLE STYLE (PREMIUM)
 ======================================= */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+}
+
 .tbl {
     width: 100%;
     border-collapse: collapse;
@@ -161,22 +239,27 @@ body {
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     animation: fadeIn 0.5s ease;
+    font-size: 13px;
+    min-width: 500px;
 }
 
 .tbl th {
     background: #5B21B6;
     color: white;
-    padding: 15px 14px;
-    font-size: 14px;
+    padding: 12px 12px;
+    font-size: 13px;
     text-align: left;
     font-weight: 600;
     letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 .tbl td {
-    padding: 14px;
-    font-size: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
     border-bottom: 1px solid #efefef;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 .tbl tr:hover td {
@@ -184,7 +267,7 @@ body {
     transition: 0.25s;
 }
 
-/* Expand box (tax list) */
+/* Expand box */
 .tax-box {
     background: #F8F5FF;
     border-left: 5px solid #7C3AED;
@@ -219,6 +302,7 @@ ul.lst li:last-child {
     display: flex;
     gap: 14px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .pager button {
@@ -229,6 +313,7 @@ ul.lst li:last-child {
     color: white;
     cursor: pointer;
     transition: 0.25s ease;
+    font-size: 14px;
 }
 
 .pager button:disabled {
@@ -247,13 +332,14 @@ ul.lst li:last-child {
 }
 
 /* =======================================
-   SWITCH BUTTON (modern toggle)
+   SWITCH BUTTON
 ======================================= */
 .switch {
     position: relative;
     display: inline-block;
-    width: 46px;
-    height: 24px;
+    width: 36px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .switch input {
@@ -266,14 +352,14 @@ ul.lst li:last-child {
     top: 0; left: 0; right: 0; bottom: 0;
     transition: 0.3s;
     background: #ccc;
-    cursor: default; /* toggle ko'rinadi lekin bosilmaydi */
+    cursor: default;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 14px;
+    width: 14px;
     left: 3px;
     bottom: 3px;
     background: white;
@@ -286,28 +372,30 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(22px);
+    transform: translateX(16px);
 }
 
 /* =======================================
    BUTTON STYLES
 ======================================= */
 .styledBtn {
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: 500;
+    font-size: 12px;
     transition: 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .expandBtn.styledBtn {
-    background: #10B981; /* yashil */
+    background: #10B981;
     color: white;
 }
 
 .saveBtn.styledBtn {
-    background: #3B82F6; /* ko'k */
+    background: #3B82F6;
     color: white;
 }
 
@@ -316,31 +404,84 @@ input:checked + .slider:before {
     transform: translateY(-1px);
 }
 
-/* ===============================
-   TAX REPORTS — PDF STYLE
-================================ */
+.tbl select {
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 6px;
+}
 
+/* =======================================
+   TAX REPORTS HEADER
+======================================= */
 .taxReportsHeader {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .addBtn, .excelBtn {
     padding: 10px 18px;
-    background: #5B21B6;
-    color: white;
-    border-radius: 8px;
-    font-weight: 500;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-}
-.addBtn:hover, .excelBtn:hover {
-    background: #6D28D9;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s ease;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* CARD STYLE */
+.addBtn {
+    background: #5B21B6;
+    color: white;
+}
+
+.addBtn:hover {
+    background: #4c1d95;
+}
+
+.importBtn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s ease;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    background: #0891b2;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.importBtn:hover {
+    background: #0e7490;
+}
+
+.importBtn i {
+    font-size: 16px;
+}
+
+
+
+.excelBtn {
+    background: #059669;
+    color: white;
+}
+
+.excelBtn:hover {
+    background: #047857;
+}
+
+/* =======================================
+   TAX CARD
+======================================= */
 .taxCard {
     background: white;
     padding: 22px;
@@ -370,127 +511,7 @@ input:checked + .slider:before {
 .taxCol p {
     margin-bottom: 6px;
     font-size: 14px;
-}
-
-.comment {
-    margin-top: 8px;
-    font-style: italic;
-    color: #555;
-}
-
-.taxBtnBox {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.viewBtn {
-    background: #10B981;
-    color: white;
-    padding: 7px 14px;
-    border-radius: 8px;
-    border: none;
-}
-.editBtn {
-    background: #3B82F6;
-    color: white;
-    padding: 7px 14px;
-    border-radius: 8px;
-    border: none;
-}
-.deleteBtn {
-    background: #EF4444;
-    color: white;
-    padding: 7px 14px;
-    border-radius: 8px;
-    border: none;
-}
-.modal {
-    position: fixed;
-    left:0; top:0;
-    width:100%; height:100%;
-    background: rgba(0,0,0,0.45);
-    display:none;
-    justify-content:center;
-    align-items:center;
-}
-
-.modal-content {
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    width:450px;
-}
-/* ===========================
-   TAX REPORTS HEADER
-=========================== */
-
-.taxReportsHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.addBtn, .excelBtn {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
-    transition: 0.2s ease;
-}
-
-.addBtn {
-    background: #5B21B6;
-    color: white;
-}
-
-.addBtn:hover {
-    background: #4c1d95;
-}
-
-.excelBtn {
-    background: #059669;
-    color: white;
-}
-
-.excelBtn:hover {
-    background: #047857;
-}
-
-/* ===========================
-   TAX CARD
-=========================== */
-
-.taxCard {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    border-left: 5px solid #5B21B6;
-}
-
-.taxRow {
-    display: flex;
-    justify-content: space-between;
-}
-
-.taxCol {
-    width: 48%;
-}
-
-.taxCol h3 {
-    margin-bottom: 10px;
-    color: #1e1b4b;
-    font-size: 20px;
-}
-
-.taxCol p {
-    margin: 4px 0;
-    color: #374151;
-    font-size: 15px;
+    line-height: 1.5;
 }
 
 .comment {
@@ -500,60 +521,53 @@ input:checked + .slider:before {
     background: #f3f4f6;
     font-size: 14px;
     color: #4b5563;
+    font-style: italic;
 }
-
-/* ===========================
-   BUTTONS
-=========================== */
 
 .taxBtnBox {
-    margin-top: 18px;
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
+/* =======================================
+   ACTION BUTTONS
+======================================= */
 .viewBtn,
 .editBtn,
 .deleteBtn {
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
     font-weight: 500;
-    margin-right: 8px;
     font-size: 14px;
     transition: 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .viewBtn {
     background: #2563eb;
     color: white;
 }
-
-.viewBtn:hover {
-    background: #1e3a8a;
-}
+.viewBtn:hover { background: #1e3a8a; }
 
 .editBtn {
     background: #d97706;
     color: white;
 }
-
-.editBtn:hover {
-    background: #b45309;
-}
+.editBtn:hover { background: #b45309; }
 
 .deleteBtn {
     background: #dc2626;
     color: white;
 }
+.deleteBtn:hover { background: #991b1b; }
 
-.deleteBtn:hover {
-    background: #991b1b;
-}
-
-/* ===========================
-   TAX MODALS
-=========================== */
-
+/* =======================================
+   MODALS
+======================================= */
 .modal {
     display: none;
     justify-content: center;
@@ -561,20 +575,22 @@ input:checked + .slider:before {
     position: fixed;
     z-index: 2000;
     left: 0; top: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     backdrop-filter: blur(5px);
     background: rgba(0,0,0,0.4);
+    padding: 16px;
 }
 
 .modalContent {
     background: white;
     padding: 25px;
-    border-radius: 12px;
-    width: 600px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    position: relative;
 }
 
 .modalContent h3, .modalContent h4 {
@@ -587,20 +603,31 @@ input:checked + .slider:before {
     margin: 10px 0 5px;
     font-size: 14px;
     color: #374151;
+    font-weight: 500;
 }
 
 .modalContent input,
-.modalContent textarea {
+.modalContent textarea,
+.modalContent select {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     outline: none;
     font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.modalContent input:focus,
+.modalContent textarea:focus,
+.modalContent select:focus {
+    border-color: #7C3AED;
 }
 
 .modalContent textarea {
     height: 70px;
+    resize: vertical;
 }
 
 .saveBtn {
@@ -612,32 +639,101 @@ input:checked + .slider:before {
     cursor: pointer;
     font-weight: 600;
     transition: 0.2s;
+    font-size: 14px;
 }
 
-.saveBtn:hover {
-    background: #059669;
+.saveBtn:hover { background: #059669; }
+
+/* View Modal Specific */
+#viewTaxContent {
+    background: #fff;
+    width: 100%;
+    max-width: 550px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.12);
+    animation: fadeIn .2s ease;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width: 768px) {
-    .taxRow {
-        flex-direction: column;
-    }
-    .taxCol {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .modalContent {
-        width: 90%;
-    }
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
 }
-/* ===============================
-   INFO ENTITY CARD DESIGN
-=============================== */
 
+.modalHeader h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #2C0F5C;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.closeBtn:hover { color: #333; }
+
+.modalBody {
+    margin-top: 15px;
+}
+
+.viewRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+}
+
+.viewRow label {
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.viewRowColumn {
+    margin-top: 15px;
+}
+
+.viewTextBox {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 1.4;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.modalFooter {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.closeBtn2 {
+    padding: 10px 18px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.closeBtn2:hover { background: #222; }
+
+/* =======================================
+   INFO ENTITY CARD
+======================================= */
 .infoCard {
     background: #ffffff;
     border-radius: 10px;
@@ -652,7 +748,6 @@ input:checked + .slider:before {
     transform: scale(1.01);
 }
 
-/* Header (clickable) */
 .infoHeader {
     padding: 14px 18px;
     font-size: 17px;
@@ -670,18 +765,17 @@ input:checked + .slider:before {
     background: #e9d5ff;
 }
 
-/* Arrow icon */
 .infoHeader::after {
     content: "▼";
     font-size: 14px;
     transition: 0.25s;
+    flex-shrink: 0;
 }
 
 .infoHeader.active::after {
     transform: rotate(180deg);
 }
 
-/* Body (hidden part) */
 .infoBody {
     padding: 15px 20px;
     background: #fafafa;
@@ -701,148 +795,24 @@ input:checked + .slider:before {
     margin-bottom: 15px;
 }
 
-/* Buttons */
 .infoBtnBox {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
-.editBtn, .deleteBtn {
-    padding: 7px 15px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.25s;
-}
-
-/* Edit Button */
-.editBtn {
-    background: #2563eb;
-    color: white;
-}
-
-.editBtn:hover {
-    background: #1e40af;
-}
-
-/* Delete Button */
-.deleteBtn {
-    background: #dc2626;
-    color: white;
-}
-
-.deleteBtn:hover {
-    background: #991b1b;
-}
-
-/* Add + Excel buttons header (same as tax reports) */
-.taxReportsHeader {
+.infoRow {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    gap: 10px;
+    gap: 20px;
 }
 
-.addBtn {
-    background: #10b981;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: 0.25s;
+.infoCol {
+    flex: 1;
 }
 
-.addBtn:hover {
-    background: #059669;
-}
-
-.excelBtn {
-    background: #4f46e5;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.excelBtn:hover {
-    background: #3730a3;
-}
-
-#viewTaxContent {
-    background: #fff;
-    width: 550px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.12);
-    animation: fadeIn .2s ease;
-}
-
-.modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modalHeader h2 {
-    margin: 0;
-}
-
-.closeBtn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-.modalBody {
-    margin-top: 15px;
-}
-
-.viewRow {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.viewRow label {
-    font-weight: bold;
-}
-
-.viewRowColumn {
-    margin-top: 15px;
-}
-
-.viewTextBox {
-    background: #f8f8f8;
-    padding: 10px;
-    border-radius: 8px;
-    line-height: 1.4;
-    border: 1px solid #ddd;
-}
-
-.modalFooter {
-    text-align: right;
-    margin-top: 20px;
-}
-
-.closeBtn2 {
-    padding: 10px 18px;
-    background: #444;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* ===============================
-   SIMPLE TAX TYPES LIST
-=============================== */
-
+/* =======================================
+   TAX TYPE LIST
+======================================= */
 .taxTypeList {
     margin-top: 20px;
     display: flex;
@@ -866,21 +836,33 @@ input:checked + .slider:before {
     background: #f5f3ff;
     transform: translateX(3px);
 }
+
+/* =======================================
+   LABELS
+======================================= */
 .taxLabel.green {
     background: #2ecc71;
-    padding: 5px;
+    padding: 4px 8px;
     border-radius: 6px;
     color: white;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .taxLabel.red {
     background: #e74c3c;
-    padding: 5px;
+    padding: 4px 8px;
     border-radius: 6px;
     color: white;
+    font-size: 12px;
+    font-weight: 600;
 }
+
+/* =======================================
+   LANGUAGE BUTTONS
+======================================= */
 .lang-uz {
-    background: #4facfe; /* ko‘k gradient o‘rniga solid moslashdi */
+    background: #4facfe;
     color: #fff;
     font-weight: 600;
     padding: 5px 12px;
@@ -888,14 +870,13 @@ input:checked + .slider:before {
     border: 1px solid #3b82f6;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 13px;
 }
 
-.lang-uz:hover {
-    background: #3b82f6;
-}
+.lang-uz:hover { background: #3b82f6; }
 
 .lang-ru {
-    background: #10b981; /* yashil */
+    background: #10b981;
     color: #fff;
     font-weight: 600;
     padding: 5px 12px;
@@ -903,131 +884,195 @@ input:checked + .slider:before {
     border: 1px solid #059669;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 13px;
 }
 
-.lang-ru:hover {
-    background: #059669;
-}
-.tbl th {
-    background: #5B21B6; /* sizning jadval header rangi */
-    color: white;
-    font-weight: 600;
+.lang-ru:hover { background: #059669; }
+
+/* =======================================
+   DASHBOARD STATS CARDS (agar bor bo'lsa)
+======================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
 }
 
-.tbl td {
-    font-size: 14px;
-    padding: 12px;
+.stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid #7C3AED;
+    transition: transform 0.2s;
 }
 
-.tbl tr:hover td {
-    background: #f4eeff;
+.stat-card:hover {
+    transform: translateY(-2px);
 }
 
-.expandBtn.styledBtn {
-    background: #10B981; /* yashil */
-    color: white;
-    padding: 6px 12px;
-}
-
-.saveBtn.styledBtn {
-    background: #3B82F6; /* ko‘k */
-    color: white;
-    padding: 6px 12px;
-}
-/* =========================
-   RESPONSIVE STYLES
-========================= */
-
-/* Kichik ekranlar uchun */
+/* =======================================
+   RESPONSIVE — TABLET (max 1024px)
+======================================= */
 @media (max-width: 1024px) {
-    /* Sidebar kichik ekranlarda yashirin bo‘lsin */
+    .sidebar-toggle {
+        display: block;
+    }
+
     .sidebar {
         transform: translateX(-100%);
-        position: fixed;
-        z-index: 1000;
-        width: 220px;
-        transition: transform 0.3s ease;
+        width: 250px;
     }
 
     .sidebar.show {
         transform: translateX(0);
     }
 
-    /* Main content marginini kamaytirish */
     .main {
         margin-left: 0;
         width: 100%;
-        transition: margin-left 0.3s ease;
     }
 
-    /* Sidebar toggle button */
-    .sidebar-toggle {
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 1100;
-        background: #5B21B6;
-        color: white;
-        border: none;
-        padding: 10px 14px;
-        border-radius: 6px;
-        cursor: pointer;
+    .main-header {
+        padding-left: 64px;
+        padding-right: 20px;
+    }
+
+    .content {
+        padding: 24px 20px;
+    }
+}
+
+/* =======================================
+   RESPONSIVE — TABLET (max 900px)
+======================================= */
+@media (max-width: 900px) {
+    .taxRow,
+    .infoRow {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .taxCol,
+    .infoCol {
+        width: 100%;
+        margin-bottom: 14px;
+    }
+
+    .taxCol h3 {
         font-size: 18px;
     }
 
-    /* Menu text yashirin bo‘lsin */
-    .menu-item span {
-        display: none;
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobil ekranlar uchun */
+/* =======================================
+   RESPONSIVE — MOBILE (max 768px)
+======================================= */
 @media (max-width: 768px) {
-    .taxRow, .infoRow {
-        flex-direction: column;
+    .content {
+        padding: 16px 12px;
     }
 
-    .taxCol, .infoCol {
+    .taxCard,
+    .infoCard,
+    ul.lst {
         width: 100%;
-        margin-bottom: 15px;
+        margin: 0 auto 16px;
     }
 
-    /* Modal moslashuvi */
-    .modalContent, #viewTaxContent {
-        width: 90%;
-        max-height: 85vh;
+    .taxBtnBox,
+    .infoBtnBox {
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
-    /* Cards va listlar kengligi */
-    .taxCard, .infoCard, ul.lst {
-        width: 100%;
-        margin: 0 auto 20px;
+    .viewBtn,
+    .editBtn,
+    .deleteBtn {
+        flex: 1 1 auto;
+        text-align: center;
+        min-width: 80px;
+        padding: 9px 10px;
+        font-size: 13px;
     }
 
-    /* Buttons moslashuvi */
-    .taxBtnBox, .infoBtnBox, .taxReportsHeader {
+    .taxReportsHeader {
         flex-direction: column;
-        gap: 12px;
+        align-items: stretch;
+        gap: 10px;
     }
 
-    .addBtn, .excelBtn, .viewBtn, .editBtn, .deleteBtn {
+    .addBtn,
+    .excelBtn {
         width: 100%;
         text-align: center;
+        font-size: 14px;
+    }
+
+    .modalContent {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    #viewTaxContent {
+        padding: 18px;
+    }
+
+    .infoHeader {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+
+    .taxTypeItem {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .pager {
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 }
 
-/* Juda kichik ekranlar (mobil telefonlar) */
+/* =======================================
+   RESPONSIVE — SMALL MOBILE (max 480px)
+======================================= */
 @media (max-width: 480px) {
     .main-header {
-        padding: 0 12px;
+        padding: 0 12px 0 60px;
+        height: 60px;
+        gap: 8px;
     }
 
     .main-header h1 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .sidebar-header h2 {
-        font-size: 16px;
+        font-size: 17px;
+    }
+
+    .sidebar-toggle {
+        top: 12px;
+        left: 12px;
+        padding: 8px 11px;
+        font-size: 18px;
+    }
+
+    .menu-item {
+        font-size: 14px;
+        padding: 11px 14px;
     }
 
     .menu-item i {
@@ -1035,77 +1080,76 @@ input:checked + .slider:before {
     }
 
     .taxCol h3 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    .taxCol p {
-        font-size: 13px;
-    }
-
+    .taxCol p,
     .comment {
         font-size: 13px;
-        padding: 8px;
     }
 
-    .tbl th, .tbl td {
+    .tbl th,
+    .tbl td {
         font-size: 12px;
-        padding: 8px;
+        padding: 8px 8px;
+    }
+
+    .content {
+        padding: 12px 8px;
+    }
+
+    .taxCard {
+        padding: 16px;
+    }
+
+    .modalContent {
+        padding: 14px;
+    }
+
+    .modalHeader h2 {
+        font-size: 16px;
+    }
+
+    .viewBtn,
+    .editBtn,
+    .deleteBtn {
+        font-size: 12px;
+        padding: 8px 8px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .pager button {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+
+    .saveBtn {
+        width: 100%;
+        padding: 12px;
     }
 }
-.menu-item.logout {
-    margin-top: auto;
-    color: #ff4d4f;
+
+/* =======================================
+   SCROLLBAR STYLING
+======================================= */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-.menu-item.logout:hover {
-    background: rgba(255, 77, 79, 0.15);
-}
-.menu {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.tbl {
-    font-size: 13px; /* oldin 14px */
+::-webkit-scrollbar-thumb {
+    background: #c4b5fd;
+    border-radius: 3px;
 }
 
-.tbl th {
-    padding: 8px 10px;
-    font-size: 13px;
-}
-
-.tbl td {
-    padding: 6px 8px;
-    font-size: 13px;
-    vertical-align: middle;
-}
-.switch {
-    width: 36px;
-    height: 20px;
-}
-
-.slider:before {
-    width: 14px;
-    height: 14px;
-    left: 3px;
-    bottom: 3px;
-}
-
-input:checked + .slider:before {
-    transform: translateX(16px);
-}
-.styledBtn {
-    padding: 4px 10px;
-    font-size: 12px;
-    border-radius: 6px;
-}
-.tbl select {
-    padding: 3px 6px;
-    font-size: 12px;
-    border-radius: 6px;
-}
-.tbl td,
-.tbl th {
-    white-space: nowrap;
+::-webkit-scrollbar-thumb:hover {
+    background: #7C3AED;
 }
