@@ -571,6 +571,10 @@ async function loadTaxReports() {
     let html = `
         <div class="taxReportsHeader">
             <button class="addBtn" onclick="openTaxAddModal()">+ Qo‘shish</button>
+            <button class="importBtn" onclick="openTaxCsvImport()">
+                <i class="ri-upload-2-line"></i> CSV Import
+            </button>
+            <input type="file" id="taxCsvFile" accept=".csv" style="display:none" onchange="uploadTaxCsv()">
         </div>
     `;
 
@@ -1090,6 +1094,10 @@ async function loadInfoEntities() {
     let html = `
         <div class="taxReportsHeader">
             <button class="addBtn" onclick="openInfoAddModal()">+ Qo‘shish</button>
+            <button class="importBtn" onclick="openInfoCsvImport()">
+                <i class="ri-upload-2-line"></i> CSV Import
+            </button>
+            <input type="file" id="infoCsvFile" accept=".csv" style="display:none" onchange="uploadInfoCsv()">
         </div>
     `;
 
@@ -1129,25 +1137,69 @@ function openInfoImport() {
     document.getElementById("infoImportFile").click();
 }
 
+function openInfoCsvImport() {
+    document.getElementById("infoCsvFile").value = "";
+    document.getElementById("infoCsvFile").click();
+}
+
 async function uploadInfoCsv() {
-    const file = document.getElementById("infoImportFile").files[0];
+    const file = document.getElementById("infoCsvFile")?.files[0]
+        || document.getElementById("infoImportFile")?.files[0];
     if (!file) return;
 
     const form = new FormData();
     form.append("file", file);
 
-    const res = await fetch("/bot/import-tax-info-csv", {
-        method: "POST",
-        body: form
-    });
+    try {
+        const res = await fetch("/bot/import-tax-info-csv", {
+            method: "POST",
+            credentials: "include",
+            body: form
+        });
+        const json = await res.json();
 
-    const json = await res.json();
-
-    if (json.status === 200) {
-        alert("Yuklandi!");
-        loadInfoEntities();
-    } else alert("Xatolik!");
+        if (json?.result || res.ok) {
+            alertModal("CSV muvaffaqiyatli yuklandi!");
+            loadInfoEntities();
+        } else {
+            alertModal("Xatolik: " + (json?.error?.errorMessage || "Noma'lum xato"));
+        }
+    } catch (e) {
+        alertModal("Server bilan bog'lanishda xatolik yuz berdi!");
+    }
 }
+function openTaxCsvImport() {
+    document.getElementById("taxCsvFile").value = "";
+    document.getElementById("taxCsvFile").click();
+}
+
+async function uploadTaxCsv() {
+    const file = document.getElementById("taxCsvFile").files[0];
+    if (!file) return;
+
+    const form = new FormData();
+    form.append("file", file);
+
+    try {
+        const res = await fetch("/bot/import-info-entity-csv", {
+            method: "POST",
+            credentials: "include",
+            body: form
+        });
+        const json = await res.json();
+
+        if (json?.result || res.ok) {
+            alertModal("CSV muvaffaqiyatli yuklandi!");
+            loadTaxReports();
+        } else {
+            alertModal("Xatolik: " + (json?.error?.errorMessage || "Noma'lum xato"));
+        }
+    } catch (e) {
+        alertModal("Server bilan bog'lanishda xatolik yuz berdi!");
+    }
+}
+
+
 
 function openInfoAddModal() {
     const modal = document.getElementById("addTaxModal");
